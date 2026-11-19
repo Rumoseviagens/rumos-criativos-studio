@@ -908,9 +908,9 @@
       const showRoundSeal = state.roundBadgeMode !== "none";
       let maxTextWidthLeft = 970;
       if (showInset) {
-        maxTextWidthLeft = showRoundSeal ? 635 : 685;
+        maxTextWidthLeft = showRoundSeal ? 625 : 680;
       } else if (showRoundSeal) {
-        maxTextWidthLeft = 810;
+        maxTextWidthLeft = 720;
       }
 
       if (showInset) {
@@ -992,8 +992,9 @@
       ctx.font = `900 24px ${F}`;
       ctx.fillText("O QUE ESTÁ INCLUSO NO PACOTE:", 68, 864);
 
-      const incList = state.inclusos.slice(0, 6);
+      const incList = state.inclusos.slice(0, 8);
       const isFewItems = incList.length <= 3;
+      const isManyItems = incList.length > 6;
 
       incList.forEach((item, idx) => {
         let px, py, pw, ph, maxFont;
@@ -1003,6 +1004,14 @@
           pw = 536;
           ph = 58;
           maxFont = 25;
+        } else if (isManyItems) {
+          const col = idx % 2;
+          const row = Math.floor(idx / 2);
+          px = 68 + col * 272;
+          py = 878 + row * 54;
+          pw = 262;
+          ph = 46;
+          maxFont = 19.5;
         } else {
           const col = idx % 2;
           const row = Math.floor(idx / 2);
@@ -1453,8 +1462,9 @@
       ctx.font = `900 26px ${F}`;
       ctx.fillText("O QUE ESTÁ INCLUSO NO PACOTE:", cX + 38, cY + 54);
 
-      const incList = state.inclusos.slice(0, 6);
+      const incList = state.inclusos.slice(0, 8);
       const isFewItems = incList.length <= 3;
+      const isManyItems = incList.length > 6;
 
       incList.forEach((item, idx) => {
         let px, py, pw, ph, maxFont;
@@ -1464,6 +1474,14 @@
           pw = cW - 76;
           ph = 64;
           maxFont = 27;
+        } else if (isManyItems) {
+          const col = idx % 2;
+          const row = Math.floor(idx / 2);
+          px = cX + 38 + col * 334;
+          py = cY + 72 + row * 60;
+          pw = 324;
+          ph = 52;
+          maxFont = 21.5;
         } else {
           const col = idx % 2;
           const row = Math.floor(idx / 2);
